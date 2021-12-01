@@ -14,7 +14,6 @@ services:
       dockerfile: deploy/web/Dockerfile
 
     command: sh -c "cd movies_admin && gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
-#    command: python3 movies_admin/manage.py runserver 0.0.0.0:8000
 
     volumes:
       - ../:/usr/src/app/
@@ -31,8 +30,6 @@ services:
     build:
       context: ../
       dockerfile: deploy/nginx/Dockerfile
-#    volumes:
-#      - static_volume:/home/app/web/staticfiles
     ports:
       - 8000:8000
     depends_on:
