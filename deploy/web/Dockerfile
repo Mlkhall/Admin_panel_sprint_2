@@ -12,6 +12,9 @@ EXPOSE 8000/tcp
 RUN pip install --upgrade pip
 RUN pip install -r movies_admin/requirements.txt
 
-COPY ../../entrypoint.sh .
-RUN sed -i 's/\r$//g' entrypoint.sh
-RUN chmod +x entrypoint.sh
+COPY deploy/web/docker-entrypoint.sh .
+
+RUN sed -i 's/\r$//g' docker-entrypoint.sh
+RUN chmod +x docker-entrypoint.sh
+
+
